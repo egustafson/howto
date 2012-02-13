@@ -6,12 +6,13 @@ The following is the process I followed to install MediaWiki:
 
 ----
 
-1. Install prerequisites:
+I.  Install prerequisites:
 
 ```
 apt-get install mysql-server mysql-client
 apt-get install lighttpd
 apt-get install php5-cgi
+```
 
     * edit /etc/php5/cgi/php.ini to enable php5 in lighttpd
         - uncomment the line 'cgi.fix_pathinfo=1
@@ -21,12 +22,14 @@ apt-get install php5-cgi
 lighttpd-enable-mod fastcgi
 lighttpd-enable-mod fastcgi-php
 service lighttpd force-reload
+```
 
     * install php5-mysql
 
 ``` 
 apt-get install php5-mysql
 service lighttpd restart
+```
 
     * Optional add-ons
 
@@ -35,10 +38,10 @@ apt-get install imagemagick php5-gd
 service lighttpd restart
 ```
 
-2. install MediaWiki ( and optional add-on(s) )
+II.  install MediaWiki ( and optional add-on(s) )
     sudo apt-get install mediawiki mediawiki-math
 
-3. map the MediaWiki installation (/var/lib/mediawiki) into lighttpd's space
+III. map the MediaWiki installation (/var/lib/mediawiki) into lighttpd's space
     * Add the following to lighttpd's configuration
     alias.url += ( "/wiki" => "/var/lib/mediawiki/" )
 
