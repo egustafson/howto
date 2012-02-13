@@ -12,7 +12,7 @@ The following is the process I followed to install MediaWiki:
 apt-get install mysql-server mysql-client
 apt-get install lighttpd
 apt-get install php5-cgi
-```
+
     * edit /etc/php5/cgi/php.ini to enable php5 in lighttpd
         - uncomment the line 'cgi.fix_pathinfo=1
     * enable the fastcgi configuration in lighttpd
@@ -21,13 +21,13 @@ apt-get install php5-cgi
 lighttpd-enable-mod fastcgi
 lighttpd-enable-mod fastcgi-php
 service lighttpd force-reload
-```
+
     * install php5-mysql
 
 ``` 
 apt-get install php5-mysql
 service lighttpd restart
-```
+
     * Optional add-ons
 
 ```
