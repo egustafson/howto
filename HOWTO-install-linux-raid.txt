@@ -1,0 +1,60 @@
+Installing Ubuntu (11.10) as a RAID-1 Mirror boot drive.
+========================================================
+
+Derived from:
+[https://help.ubuntu.com/community/Installation/SoftwareRAID]
+
+
+Procedure
+---------
+
+0) Prepare
+  - Use Ubuntu Server ISO image.
+
+1) Proceed with normal insall until 'Partition Disks'
+
+2) Select 'Manual' partitoning to partition each physical disk:
+
+  a) Select the first device (in the raid pair/set)
+    * Select 'Create a new empty partition table'
+  b) Select the free space on the first raid device
+    * Select 'automatically partition the free space'
+    * swap and '/' should be created
+  c) Select the newly created '/' partition
+    * Enable the bootable flag on this partition
+  d) repeat b-c for the second device in the raid set.
+
+3) Select 'Configure software RAID'
+
+  a) Select 'yes' to commit the partition tables to each physical
+     disk.
+  b) Select 'Create MD Device'
+  c) Select 'Raid1' (for mirroring)
+  d) Select '2' for number of active disks in the array (or as
+     appropriate). 
+  e) Number of spares: '0'  (or as appropriate)
+  f) Check the set of partitions to be used for '/' and 'Continue' 
+    * Confirm 'yes' to write the changes to disk.
+  g) Repeat b-f for the swap partition
+  h) Select 'Finish'
+
+4) Returning to the 'Partition disks' top level menu:
+
+  a) Select the raid device for '/'
+  b) Use as:       'Ext4 journaling file system'
+  c) Mount point:  '/'
+  d) Select 'Done setting up the partition'
+  
+  e) Select the raid device for swap
+  f) Use as: 'swap area'
+  g) Select 'Done setting up the partition'
+
+5) Returning to the 'Partition disks' top level menu:
+
+  a) Select 'Finish partitioning and write changes to disk'
+  b) Answer question about booting in degraded mode.
+  c) Select 'Yes' to write changes to disk.
+
+6) Proceed with normal installation.
+
+
